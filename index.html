@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>JAHIRS WORLD – সব পণ্য এক জায়গায়</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f7fb;--surface:#fff;--ink:#1b2250;--muted:#5d6385;--line:#dfe2ee;--accent:#f2b230;--accent-ink:#1b2250;--hot:#e2512d;color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12152e;--surface:#1b2050;--ink:#f1f2fa;--muted:#a9aed0;--line:#2e3470;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#12152e;--surface:#1b2050;--ink:#f1f2fa;--muted:#a9aed0;--line:#2e3470;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Hind Siliguri','Noto Sans Bengali','Kalpurush',sans-serif;line-height:1.6}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+header{background:var(--ink);color:#fff;position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+header .wrap{display:flex;align-items:center;gap:14px;padding-top:12px;padding-bottom:12px}
+.logo{font-weight:700;font-size:1.55rem;letter-spacing:.06em;white-space:nowrap;color:#ff6b57}
+.logo span{color:var(--accent)}
+.search{flex:1;min-width:0}
+.search input{width:100%;border:0;border-radius:10px;padding:10px 14px;font:inherit;background:#fff;color:#1b2250}
+.cartbtn{background:var(--accent);color:var(--accent-ink);border:0;border-radius:10px;padding:9px 14px;font:inherit;font-weight:600;cursor:pointer;white-space:nowrap}
+:focus-visible{outline:3px solid var(--hot);outline-offset:2px}
+.hero{padding:30px 0 10px}
+.hero h1{font-size:clamp(1.7rem,5vw,2.8rem);line-height:1.25;margin:0 0 8px;max-width:20ch}
+.hero p{color:var(--muted);margin:0;max-width:52ch}
+.cats{display:flex;gap:8px;overflow-x:auto;padding:18px 0 6px}
+.cats button{flex:none;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:7px 16px;font:inherit;cursor:pointer}
+.cats button[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+:root[data-theme="dark"] .cats button[aria-pressed="true"]{background:var(--accent);color:#1b2250;border-color:var(--accent)}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:10px 0}
+.bar select{font:inherit;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:6px 10px}
+.sell{background:var(--surface);border:1.5px dashed var(--hot);border-radius:12px;padding:14px 16px;margin:6px 0 14px}.sell b{display:block}.sell p{margin:2px 0 0;color:var(--muted);font-size:.92rem}.sell .f{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.sell input,.sell select{flex:1;min-width:140px;font:inherit;padding:8px 10px;border:1.5px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}.sell button{border:0;border-radius:8px;background:var(--hot);color:#fff;font:inherit;font-weight:600;padding:8px 16px;cursor:pointer}.sell .ok{color:var(--muted);font-size:.9rem;margin-top:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px;padding-bottom:40px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.pic{height:140px;display:grid;place-items:center;font-size:3.6rem}
+.info{padding:12px 14px 14px;display:flex;flex-direction:column;gap:4px;flex:1}
+.info small{color:var(--muted)}
+.info h3{margin:0;font-size:1.02rem;font-weight:600}
+.price{font-weight:700;font-size:1.1rem}
+.price s{font-weight:400;color:var(--muted);font-size:.9rem;margin-left:6px}
+.off{background:var(--hot);color:#fff;border-radius:6px;font-size:.75rem;padding:1px 7px;margin-left:6px}
+.add{margin-top:auto;border:0;border-radius:9px;background:var(--ink);color:#fff;padding:9px;font:inherit;font-weight:600;cursor:pointer}
+:root[data-theme="dark"] .add{background:var(--accent);color:#1b2250}
+.call{margin-top:auto;display:block;text-align:center;border:1.5px solid var(--hot);color:var(--hot);border-radius:9px;padding:7px;text-decoration:none;font-weight:600;font-size:.92rem}.call+.add{margin-top:6px}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:40px 0}
+aside{position:fixed;top:0;right:0;height:100%;width:min(380px,100%);background:var(--surface);color:var(--ink);box-shadow:-8px 0 30px rgba(0,0,0,.25);transform:translateX(105%);transition:transform .25s;z-index:10;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+aside.open{transform:none}
+aside h2{margin:0;padding:16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;font-size:1.15rem}
+aside h2 button{border:0;background:none;color:inherit;font-size:1.4rem;cursor:pointer}
+#items{flex:1;overflow:auto;padding:8px 16px}
+.row{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.row .e{font-size:1.8rem}
+.row div{flex:1}
+.qty button{width:28px;height:28px;border-radius:7px;border:1px solid var(--line);background:none;color:inherit;font:inherit;cursor:pointer}
+.foot{padding:16px;border-top:1px solid var(--line)}
+.total{display:flex;justify-content:space-between;font-weight:700;font-size:1.15rem;margin-bottom:10px}
+.foot input{width:100%;font:inherit;padding:8px 10px;margin-bottom:8px;border:1.5px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}.msg a{color:var(--hot);font-weight:700}
+.order{width:100%;border:0;border-radius:10px;background:var(--accent);color:#1b2250;font:inherit;font-weight:700;padding:12px;cursor:pointer}
+.msg{margin-top:10px;color:var(--muted);font-size:.9rem}
+footer{background:var(--ink);color:#c9cdea;padding:22px 0;font-size:.92rem;text-align:center}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<div class="logo">JAHIRS <span>WORLD</span></div>
+<div class="search"><input id="q" type="search" placeholder="পণ্য খুঁজুন, যেমন: হেডফোন, পাঞ্জাবি…" aria-label="পণ্য খুঁজুন"></div>
+<button class="cartbtn" id="open">🛒 কার্ট (<span id="cnt">০</span>)</button>
+</div></header>
+
+<main class="wrap">
+<section class="hero">
+<h1>ইলেকট্রনিক্স থেকে পোশাক, সবই এক দোকানে</h1>
+<p>সারা বাংলাদেশে ক্যাশ অন ডেলিভারি। পছন্দের পণ্য কার্টে রাখুন, আর অর্ডার করুন এক ক্লিকে।</p>
+</section>
+<div class="cats" id="cats" role="group" aria-label="ক্যাটাগরি"></div>
+<div class="bar"><span id="n" aria-live="polite"></span>
+<select id="sort" aria-label="সাজান"><option value="d">ডিফল্ট</option><option value="lo">দাম: কম থেকে বেশি</option><option value="hi">দাম: বেশি থেকে কম</option></select></div>
+<div class="sell" id="sell" hidden><b>আপনার পুরাতন পণ্য বিক্রি করতে চান?</b><p>পণ্যের নাম, দাম ও অবস্থা লিখে নিচের বাটনে চাপ দিন। পণ্যটি সঙ্গে সঙ্গে তালিকায় যোগ হবে।</p><div class="f"><input id="sn" placeholder="পণ্যের নাম" aria-label="পণ্যের নাম"><input id="sp" type="number" min="1" placeholder="দাম (৳)" aria-label="দাম"><select id="su" aria-label="অবস্থা"><option>ভালো অবস্থা</option><option>মোটামুটি</option><option>ঠিকঠাক চলছে</option></select><input id="sf" type="tel" inputmode="numeric" placeholder="মোবাইল নম্বর (01XXXXXXXXX)" aria-label="মোবাইল নম্বর"><input id="sa" placeholder="এলাকা (যেমন: কসবা, চট্টগ্রাম)" aria-label="এলাকা"><button id="sb">বিক্রির জন্য তুলুন</button></div><div class="ok" id="sm" aria-live="polite"></div></div>
+<div class="grid" id="grid"></div>
+</main>
+
+<aside id="cart" aria-label="কার্ট">
+<h2>আপনার কার্ট <button id="close" aria-label="বন্ধ করুন">×</button></h2>
+<div id="items"></div>
+<div class="foot"><div class="total"><span>মোট</span><span id="tot">৳০</span></div>
+<input id="cn" placeholder="আপনার নাম" aria-label="আপনার নাম"><input id="cp" type="tel" inputmode="numeric" placeholder="মোবাইল নম্বর" aria-label="মোবাইল নম্বর"><input id="ca" placeholder="পূর্ণ ঠিকানা" aria-label="পূর্ণ ঠিকানা"><button class="order" id="order">অর্ডার নিশ্চিত করুন</button><div class="msg" id="msg"></div></div>
+</aside>
+<footer>© ২০২৬ JAHIRS WORLD · ডেলিভারি: ঢাকায় ১–২ দিন, ঢাকার বাইরে ৩–৫ দিন</footer>
+
+<script>
+const P=[
+{id:1,n:"ওয়্যারলেস হেডফোন",c:"ইলেকট্রনিক্স",p:2490,o:3200,e:"🎧",b:"#dfe7ff"},
+{id:2,n:"৩২ ইঞ্চি স্মার্ট টিভি",c:"ইলেকট্রনিক্স",p:21500,o:24000,e:"📺",b:"#e3f3ea"},
+{id:3,n:"ব্লুটুথ স্পিকার",c:"ইলেকট্রনিক্স",p:1850,o:0,e:"🔊",b:"#ffe9d6"},
+{id:4,n:"ল্যাপটপ ব্যাকপ্যাক",c:"ইলেকট্রনিক্স",p:1290,o:1600,e:"💻",b:"#efe3ff"},
+{id:5,n:"স্মার্ট ওয়াচ",c:"গ্যাজেট",p:3150,o:3900,e:"⌚",b:"#ffe3e3"},
+{id:6,n:"২০,০০০ mAh পাওয়ার ব্যাংক",c:"গ্যাজেট",p:1950,o:0,e:"🔋",b:"#fff3c9"},
+{id:7,n:"ফাস্ট চার্জার ৬৫W",c:"গ্যাজেট",p:990,o:1200,e:"🔌",b:"#dff4f7"},
+{id:8,n:"ওয়্যারলেস মাউস",c:"গ্যাজেট",p:750,o:0,e:"🖱️",b:"#e9ecf7"},
+{id:9,n:"পুরুষদের কটন পাঞ্জাবি",c:"পোশাক",p:1650,o:2100,e:"👘",b:"#e3f3ea"},
+{id:10,n:"মহিলাদের থ্রি-পিস",c:"পোশাক",p:2200,o:0,e:"👗",b:"#ffe3ee"},
+{id:11,n:"ক্যাজুয়াল স্নিকার্স",c:"পোশাক",p:2450,o:2900,e:"👟",b:"#dfe7ff"},
+{id:12,n:"পোলো টি-শার্ট",c:"পোশাক",p:590,o:790,e:"👕",b:"#fff3c9"},
+{id:13,n:"ইলেকট্রিক কেটলি",c:"ঘর ও রান্না",p:1190,o:0,e:"☕",b:"#ffe9d6"},
+{id:14,n:"নন-স্টিক ফ্রাইং প্যান",c:"ঘর ও রান্না",p:850,o:1050,e:"🍳",b:"#e9ecf7"},
+{id:15,n:"এলইডি টেবিল ল্যাম্প",c:"ঘর ও রান্না",p:690,o:0,e:"💡",b:"#fff3c9"},
+{id:16,n:"ফেস ওয়াশ ও ময়েশ্চারাইজার সেট",c:"সৌন্দর্য",p:980,o:1250,e:"🧴",b:"#ffe3ee"},
+{id:17,n:"৬/১২৮ জিবি স্মার্টফোন",c:"মোবাইল",p:18900,o:21000,e:"📱",b:"#dfe7ff"},
+{id:18,n:"শকপ্রুফ ফোন কভার",c:"মোবাইল",p:350,o:0,e:"📲",b:"#e3f3ea"},
+{id:19,n:"রিমোট কন্ট্রোল গাড়ি",c:"খেলনা ও শিশু",p:1450,o:1800,e:"🚗",b:"#ffe9d6"},
+{id:20,n:"রঙিন ব্লক সেট (১০০ পিস)",c:"খেলনা ও শিশু",p:690,o:0,e:"🧸",b:"#fff3c9"},
+{id:21,n:"নন-স্লিপ যোগা ম্যাট",c:"খেলাধুলা",p:850,o:1050,e:"🧘",b:"#e3f3ea"},
+{id:22,n:"অ্যাডজাস্টেবল ডাম্বেল সেট",c:"খেলাধুলা",p:2600,o:0,e:"🏋️",b:"#e9ecf7"},
+{id:23,n:"নোটবুক ও কলম সেট",c:"বই ও স্টেশনারি",p:420,o:550,e:"📓",b:"#efe3ff"},
+{id:24,n:"ফাউন্টেন পেন (গিফট বক্স)",c:"বই ও স্টেশনারি",p:780,o:0,e:"🖋️",b:"#dff4f7"},
+{id:25,n:"পুরুষদের হাতঘড়ি",c:"ঘড়ি ও গহনা",p:2850,o:3500,e:"🕰️",b:"#fff3c9"},
+{id:26,n:"মেয়েদের ইয়ারিং সেট",c:"ঘড়ি ও গহনা",p:620,o:0,e:"💍",b:"#ffe3ee"},
+{id:27,n:"কাঠের ওয়াল ক্লক",c:"সাজসজ্জা",p:1350,o:1650,e:"🖼️",b:"#ffe9d6"},
+{id:28,n:"কুশন কভার (৫ পিস)",c:"সাজসজ্জা",p:890,o:0,e:"🛋️",b:"#dfe7ff"},
+{id:29,n:"খাঁটি সুন্দরবনের মধু (১ কেজি)",c:"মুদি ও খাবার",p:950,o:1100,e:"🍯",b:"#fff3c9"},
+{id:30,n:"আজওয়া খেজুর (৫০০ গ্রাম)",c:"মুদি ও খাবার",p:720,o:0,e:"🌴",b:"#ffe9d6"},
+{id:31,n:"ISI মার্কা বাইক হেলমেট",c:"গাড়ি ও বাইক",p:1650,o:1950,e:"🪖",b:"#e9ecf7"},
+{id:32,n:"বাইক ফোন হোল্ডার",c:"গাড়ি ও বাইক",p:450,o:0,e:"🏍️",b:"#dff4f7"},
+{id:33,n:"ব্যবহৃত স্মার্টফোন (৬ মাস পুরনো)",c:"পুরাতন পণ্য",u:"ভালো অবস্থা",p:12500,o:0,e:"📱",b:"#dfe7ff"},
+{id:34,n:"সেকেন্ড হ্যান্ড ল্যাপটপ",c:"পুরাতন পণ্য",u:"ভালো অবস্থা",p:24000,o:0,e:"💻",b:"#efe3ff"},
+{id:35,n:"ব্যবহৃত সাইকেল",c:"পুরাতন পণ্য",u:"মোটামুটি",p:4500,o:0,e:"🚲",b:"#e3f3ea"},
+{id:36,n:"এইচএসসি বইয়ের সেট",c:"পুরাতন পণ্য",u:"ভালো অবস্থা",p:900,o:0,e:"📚",b:"#fff3c9"},
+{id:37,n:"ব্যবহৃত রেফ্রিজারেটর",c:"পুরাতন পণ্য",u:"ঠিকঠাক চলছে",p:16000,o:0,e:"🧊",b:"#dff4f7"}];
+const CATS=["সব",...new Set(P.map(x=>x.c))];
+const WA="8801XXXXXXXXX";
+let cat="সব",term="",sort="d",cart={};
+const $=i=>document.getElementById(i), bn=n=>n.toLocaleString('bn-BD');
+const tk=n=>"৳"+bn(n);
+function render(){
+ let l=P.filter(x=>(cat==="সব"||x.c===cat)&&x.n.includes(term.trim()));
+ if(sort==="lo")l.sort((a,b)=>a.p-b.p); if(sort==="hi")l.sort((a,b)=>b.p-a.p);
+ $("n").textContent=bn(l.length)+"টি পণ্য";$("sell").hidden=cat!=="পুরাতন পণ্য";
+ $("grid").innerHTML=l.length?l.map(x=>`<article class="card"><div class="pic" style="background:${x.b}" aria-hidden="true">${x.e}</div><div class="info"><small>${x.c}${x.u?" · "+x.u:""}</small><h3>${x.n}</h3><div class="price">${tk(x.p)}${x.o?`<s>${tk(x.o)}</s><span class="off">−${bn(Math.round((1-x.p/x.o)*100))}%</span>`:""}</div>${x.ph?`<a class="call" href="tel:${x.ph}">📞 বিক্রেতাকে কল করুন · ${x.ar}</a>`:""}<button class="add" data-id="${x.id}">কার্টে রাখুন</button></div></article>`).join(""):`<div class="empty">এই নামে কোনো পণ্য পাওয়া যায়নি। অন্য শব্দ দিয়ে খুঁজুন।</div>`;
+}
+function cats(){$("cats").innerHTML=CATS.map(c=>`<button aria-pressed="${c===cat}" data-c="${c}">${c}</button>`).join("")}
+function drawCart(){
+ const ids=Object.keys(cart); let t=0,k=0;
+ $("items").innerHTML=ids.length?ids.map(i=>{const x=P.find(y=>y.id==i),q=cart[i];t+=x.p*q;k+=q;return `<div class="row"><span class="e">${x.e}</span><div><b>${x.n}</b><br>${tk(x.p)}</div><span class="qty"><button data-m="${i}" aria-label="কমান">−</button> ${bn(q)} <button data-p="${i}" aria-label="বাড়ান">+</button></span></div>`}).join(""):`<p class="empty">কার্ট খালি। পছন্দের পণ্য যোগ করুন।</p>`;
+ $("tot").textContent=tk(t);$("cnt").textContent=bn(k);
+}
+$("grid").onclick=e=>{const b=e.target.closest(".add");if(!b)return;cart[b.dataset.id]=(cart[b.dataset.id]||0)+1;drawCart();$("cart").classList.add("open");$("msg").textContent=""};
+$("cats").onclick=e=>{const b=e.target.closest("button");if(!b)return;cat=b.dataset.c;cats();render()};
+$("q").oninput=e=>{term=e.target.value;render()};
+$("sort").onchange=e=>{sort=e.target.value;render()};
+$("items").onclick=e=>{const m=e.target.dataset.m,p=e.target.dataset.p;if(p)cart[p]++;if(m&&--cart[m]<=0)delete cart[m];drawCart()};
+$("open").onclick=()=>$("cart").classList.add("open");
+$("close").onclick=()=>$("cart").classList.remove("open");
+$("order").onclick=()=>{if(!Object.keys(cart).length){$("msg").textContent="আগে কার্টে পণ্য যোগ করুন।";return}
+ const nm=$("cn").value.trim(),ph=$("cp").value.trim(),ad=$("ca").value.trim();
+ if(!nm||!ph||!ad){$("msg").textContent="নাম, মোবাইল নম্বর ও ঠিকানা লিখুন।";return}
+ if(!/^\d{10,15}$/.test(WA)){$("msg").textContent="দোকানের হোয়াটসঅ্যাপ নম্বর এখনও বসানো হয়নি।";return}
+ let t=0;const ls=Object.keys(cart).map(i=>{const x=P.find(y=>y.id==i),q=cart[i];t+=x.p*q;return "• "+x.n+" × "+bn(q)+" = "+tk(x.p*q)}).join("\n");
+ const m="নতুন অর্ডার (JAHIRS WORLD)\n\n"+ls+"\n\nমোট: "+tk(t)+"\n\nনাম: "+nm+"\nমোবাইল: "+ph+"\nঠিকানা: "+ad+"\nপেমেন্ট: ক্যাশ অন ডেলিভারি";
+ const u="https://wa.me/"+WA+"?text="+encodeURIComponent(m);
+ window.open(u,"_blank");
+ $("msg").innerHTML=`<a href="${u}" target="_blank" rel="noopener">👉 হোয়াটসঅ্যাপে অর্ডার পাঠান</a><br>হোয়াটসঅ্যাপ নিজে না খুললে উপরের লিংকে চাপুন, তারপর সেখানে “Send” চাপুন।`};
+$("sb").onclick=()=>{const n=$("sn").value.trim(),p=+$("sp").value,ph=$("sf").value.replace(/\D/g,""),ar=$("sa").value.trim();if(!n||!(p>0)||!/^01\d{9}$/.test(ph)||!ar){$("sm").textContent="নাম, সঠিক দাম, ১১ সংখ্যার মোবাইল নম্বর (01 দিয়ে শুরু, ইংরেজি সংখ্যায়) ও এলাকা লিখুন।";return}
+ P.unshift({id:Date.now(),n,c:"পুরাতন পণ্য",u:$("su").value,p,ph,ar,o:0,e:"📦",b:"#e9ecf7"});$("sn").value="";$("sp").value="";$("sf").value="";$("sa").value="";$("sm").textContent="তালিকায় যোগ হয়েছে (ডেমো: পেজ রিফ্রেশ করলে মুছে যাবে)।";render()};
+const AR=["চট্টগ্রাম","ঢাকা","সিলেট","খুলনা","রাজশাহী"];P.filter(x=>x.u).forEach((x,i)=>{x.ar=AR[i%5];x.ph="01700000000"});
+cats();render();drawCart();
+</script>
+</body>
+</html>
